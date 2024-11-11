@@ -11,34 +11,36 @@ import {
   Query,
   Res,
 } from "@nestjs/common";
+import { CardsService } from "./cards.service";
 
 @Controller("cards")
 export class CardsController {
+  constructor(private readonly cardsService: CardsService) {}
+
   @Get()
   findAll(@Query() paginationQuery) {
-    const { limit, offset } = paginationQuery;
-    return `This action returns all cards Limit: ${limit}, offset: ${offset}`;
+    // const { limit, offset } = paginationQuery;
+    return this.cardsService.findAll();
   }
 
   @Get(":id")
   findOne(@Param("id") id: string) {
-    return `This action returns ${id} card`;
+    return this.cardsService.findOne(id);
   }
 
   @Post()
   @HttpCode(HttpStatus.GONE)
   create(@Body() body) {
-    return body;
-    // return `this action creates a card`;
+    return this.cardsService.create(body);
   }
 
   @Patch(":id")
   update(@Param("id") id: string, @Body() body) {
-    return `This actions updates #${id} card`;
+    return this.cardsService.update(id, body);
   }
 
   @Delete(":id")
   remove(@Param("id") id: string) {
-    return `This action removes #${id} card`;
+    return this.cardsService.remove(id);
   }
 }
