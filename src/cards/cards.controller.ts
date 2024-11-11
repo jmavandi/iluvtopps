@@ -12,6 +12,8 @@ import {
   Res,
 } from "@nestjs/common";
 import { CardsService } from "./cards.service";
+import { CreateCardDto } from "./dto/create-card.dto/create-card.dto";
+import { UpdateCardDto } from "./dto/update-card.dto/update-card.dto";
 
 @Controller("cards")
 export class CardsController {
@@ -29,14 +31,13 @@ export class CardsController {
   }
 
   @Post()
-  @HttpCode(HttpStatus.GONE)
-  create(@Body() body) {
-    return this.cardsService.create(body);
+  create(@Body() createCardDto: CreateCardDto) {
+    return this.cardsService.create(createCardDto);
   }
 
   @Patch(":id")
-  update(@Param("id") id: string, @Body() body) {
-    return this.cardsService.update(id, body);
+  update(@Param("id") id: string, @Body() updateCardDto: UpdateCardDto) {
+    return this.cardsService.update(id, updateCardDto);
   }
 
   @Delete(":id")
