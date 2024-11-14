@@ -1,6 +1,16 @@
+import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+
+@Entity()
 export class Card {
+  @PrimaryGeneratedColumn()
   id: number;
+
+  @Column()
   name: string;
+
+  @Column()
   brand: string;
-  sport: string;
+
+  @Column("json", { nullable: true })
+  sport: string[];
 }

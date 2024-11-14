@@ -13,7 +13,7 @@ export class CardsService {
       id: 1,
       name: "2024 Topps Chrome Mike Trout # 134",
       brand: "Topps",
-      sport: "baseball",
+      sport: ["baseball"],
     },
   ];
 
