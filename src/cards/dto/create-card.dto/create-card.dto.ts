@@ -1,4 +1,4 @@
-import { IsString } from "class-validator";
+import { IsOptional, IsString } from "class-validator";
 import { DeepPartial } from "typeorm";
 
 export class CreateCardDto {
@@ -6,6 +6,6 @@ export class CreateCardDto {
   readonly name: string;
   @IsString()
   readonly brand: string;
-  @IsString()
-  readonly sport?: DeepPartial<string[]>;
+  @IsString({ each: true })
+  readonly sport: string[];
 }

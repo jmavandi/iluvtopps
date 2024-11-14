@@ -1,4 +1,11 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import {
+  Column,
+  Entity,
+  JoinTable,
+  ManyToMany,
+  PrimaryGeneratedColumn,
+} from "typeorm";
+import { Sport } from "./sport.entity/sport.entity";
 
 @Entity()
 export class Card {
@@ -11,6 +18,12 @@ export class Card {
   @Column()
   brand: string;
 
-  @Column("json", { nullable: true })
-  sport: string[];
+  @Column({ default: 0 })
+  recommendations: number;
+
+  @JoinTable()
+  @ManyToMany((type) => Sport, (sport) => sport.cards, {
+    cascade: true,
+  })
+  sport: Sport[];
 }

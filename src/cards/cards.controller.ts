@@ -14,15 +14,16 @@ import {
 import { CardsService } from "./cards.service";
 import { CreateCardDto } from "./dto/create-card.dto/create-card.dto";
 import { UpdateCardDto } from "./dto/update-card.dto/update-card.dto";
+import { PaginationQueryDto } from "src/common/dto/pagination-query.dto/pagination-query.dto";
 
 @Controller("cards")
 export class CardsController {
   constructor(private readonly cardsService: CardsService) {}
 
   @Get()
-  findAll(@Query() paginationQuery) {
+  findAll(@Query() paginationQuery: PaginationQueryDto) {
     // const { limit, offset } = paginationQuery;
-    return this.cardsService.findAll();
+    return this.cardsService.findAll(paginationQuery);
   }
 
   @Get(":id")
