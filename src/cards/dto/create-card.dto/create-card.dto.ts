@@ -1,4 +1,5 @@
 import { IsString } from "class-validator";
+import { DeepPartial } from "typeorm";
 
 export class CreateCardDto {
   @IsString()
@@ -6,5 +7,5 @@ export class CreateCardDto {
   @IsString()
   readonly brand: string;
   @IsString()
-  readonly sport: string;
+  readonly sport?: DeepPartial<string[]>;
 }
