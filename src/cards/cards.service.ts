@@ -9,7 +9,7 @@ import { InjectRepository } from "@nestjs/typeorm";
 import { DataSource, Repository } from "typeorm";
 import { CreateCardDto } from "./dto/create-card.dto/create-card.dto";
 import { UpdateCardDto } from "./dto/update-card.dto/update-card.dto";
-import { Sport } from "./entities/sport.entity/sport.entity";
+import { Sport } from "./entities/sport.entity";
 import { Event } from "src/events/entities/event.entity/event.entity";
 import { PaginationQueryDto } from "src/common/dto/pagination-query.dto/pagination-query.dto";
 

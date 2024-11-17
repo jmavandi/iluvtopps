@@ -5,7 +5,7 @@ import {
   ManyToMany,
   PrimaryGeneratedColumn,
 } from "typeorm";
-import { Sport } from "./sport.entity/sport.entity";
+import { Sport } from "./sport.entity";
 
 @Entity()
 export class Card {
@@ -14,6 +14,9 @@ export class Card {
 
   @Column()
   name: string;
+
+  @Column({ nullable: true })
+  description: string;
 
   @Column()
   brand: string;

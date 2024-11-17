@@ -1,5 +1,5 @@
 import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from "typeorm";
-import { Card } from "../card.entity";
+import { Card } from "./card.entity";
 
 @Entity()
 export class Sport {
